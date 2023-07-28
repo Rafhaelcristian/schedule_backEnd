@@ -45,5 +45,5 @@ export const deleteContactController = async (
   res: Response
 ): Promise<Response> => {
   await deleteContactService(+req.params.id);
-  return res.status(201).json();
+  return res.status(204).send();
 };
