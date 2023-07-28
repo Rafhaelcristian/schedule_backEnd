@@ -21,11 +21,11 @@ export class Contact {
   @Column({ type: "varchar", length: 45, unique: true, nullable: true })
   second_email: string | null | undefined;
 
-  @Column({ type: "integer", unique: true })
-  telephone: number;
+  @Column({ type: "varchar", unique: true })
+  telephone: string;
 
-  @Column({ type: "integer", unique: true, nullable: true })
-  second_telephone: number | null | undefined;
+  @Column({ type: "varchar", unique: true, nullable: true })
+  second_telephone: string | null | undefined;
 
   @CreateDateColumn({ type: "date" })
   createdAt: string;

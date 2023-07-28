@@ -1,15 +1,19 @@
 import { Request, Response } from "express";
-import { Client } from "../entities";
 import {
   createClientService,
+  deleteClientService,
   readClientService,
 } from "../services/client.service";
+import {
+  TClientResponse,
+  TClientsReponse,
+} from "../interfaces/client.interface";
 
 export const createClientController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const client: Client = await createClientService(req.body);
+  const client: TClientResponse = await createClientService(req.body);
   return res.status(201).json(client);
 };
 
@@ -17,20 +21,25 @@ export const readClientController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const clients: Client[] = await readClientService();
-  return res.status(200).json(clients);
+  const clients: TClientsReponse = await readClientService();
+  return res.json(clients);
 };
 
 export const updateClientController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  return res.status(201).json();
+  const client: TClientResponse = await createClientService(req.body);
+  return res.json(client);
 };
 
 export const deleteClientController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  return res.status(201).json();
+  const clientId: number = res.locals.sub;
+
+  const deleteClient = await deleteClientService(clientId);
+
+  return res.status(204).send();
 };
