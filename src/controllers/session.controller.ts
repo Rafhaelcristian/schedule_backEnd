@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { TLoginRequest } from "../interfaces/login.interface";
-import { loginService } from "../services/session.service";
+import { loginService } from "../services/sessionService/session.service";
 
 const loginUserController = async (
   req: Request,

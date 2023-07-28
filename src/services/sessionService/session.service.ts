@@ -1,11 +1,11 @@
-import { Repository } from "typeorm";
 import "dotenv/config";
-import { AppDataSource } from "../data-source";
-import { AppError } from "../error";
+import { Repository } from "typeorm";
+import { AppDataSource } from "../../data-source";
+import { AppError } from "../../error";
 import { compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { Client } from "../entities";
-import { TLoginRequest } from "../interfaces/login.interface";
+import { Client } from "../../entities";
+import { TLoginRequest } from "../../interfaces/login.interface";
 
 export const loginService = async (payload: TLoginRequest): Promise<string> => {
   const userRepository: Repository<Client> =

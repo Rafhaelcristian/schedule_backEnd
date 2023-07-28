@@ -1,19 +1,21 @@
 import { Request, Response } from "express";
-import {
-  createContactService,
-  deleteContactService,
-  readContactService,
-  updateContactService,
-} from "../services/contact.service";
 import { Contact } from "../entities/Contact.entity";
-import { Client } from "../entities";
+import { TContactResponse } from "../interfaces/contact.interface";
+import { TClientContactsResponse } from "../interfaces/client.interface";
+import createContactService from "../services/contactServices/createContact";
+import readContactService from "../services/contactServices/listContact";
+import updateContactService from "../services/contactServices/patchContact";
+import deleteContactService from "../services/contactServices/deleteContact";
 
 export const createContactController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
   const client = res.locals.sub;
-  const Contact: Contact = await createContactService(req.body, client);
+  const Contact: TContactResponse = await createContactService(
+    req.body,
+    client
+  );
   return res.status(201).json(Contact);
 };
 
@@ -21,8 +23,10 @@ export const readContactController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const client = res.locals.sub;
-  const Contacts: Client | null = await readContactService(client);
+  const client = +res.locals.sub;
+  const Contacts: TClientContactsResponse | null = await readContactService(
+    client
+  );
   return res.json(Contacts);
 };
 

@@ -1,13 +1,12 @@
 import { Request, Response } from "express";
 import {
-  createClientService,
-  deleteClientService,
-  readClientService,
-} from "../services/client.service";
-import {
   TClientResponse,
   TClientsReponse,
 } from "../interfaces/client.interface";
+import createClientService from "../services/clientServices/create.service";
+import readClientService from "../services/clientServices/list.service";
+import updateClientService from "../services/clientServices/patch.service";
+import deleteClientService from "../services/clientServices/delete.service";
 
 export const createClientController = async (
   req: Request,
@@ -29,7 +28,8 @@ export const updateClientController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const client: TClientResponse = await createClientService(req.body);
+  const clientId = +res.locals.sub;
+  const client: TClientResponse = await updateClientService(req.body, clientId);
   return res.json(client);
 };
 

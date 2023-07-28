@@ -17,13 +17,18 @@ const contactSchemaRequest = contactSchema.omit({
   clientId: true,
 });
 
+const contactSchemaResponse = contactSchema.omit({
+  clientId: true,
+});
+
 const updateContactSchemaRequest = contactSchemaRequest.partial();
 
-const allContactSchema = z.array(contactSchema);
+const allContactSchema = z.array(contactSchemaResponse);
 
 export {
   contactSchema,
   contactSchemaRequest,
+  contactSchemaResponse,
   updateContactSchemaRequest,
   allContactSchema,
 };
