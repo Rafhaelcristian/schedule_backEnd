@@ -9,7 +9,7 @@ const contactSchema = z.object({
   second_telephone: z.string().optional().nullish(),
   createdAt: z.string(),
   clientId: z.number(),
-});
+}); 
 
 const contactSchemaRequest = contactSchema.omit({
   id: true,

@@ -1,5 +1,11 @@
 # Projeto SP2: BackEnd
 
+##
+
+Para iniciar o projeto é necessário instalar todas as dependências e DevDependencias, para isso basta dar um npm install.
+
+Após instalar as dependências é necessário alterar o nome do arquivo .env.exemple para somente .env e popular ele com as config do usupario que vai rodar a app, assim também como a SECRET_KEY.
+
 ## Introdução
 
 Está é uma aplicação básica que visa um CRUD completo de um client, este poderá adicionar vários contatos, assim como visualiza-los, edita-los e excluí-los.
