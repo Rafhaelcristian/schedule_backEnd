@@ -18,17 +18,17 @@ Está é uma aplicação básica que visa um CRUD completo de um client, este po
 
 ## Endpoints:
 
-| Método | Endpoint      | Responsabilidade             | Autenticação                          |
-| ------ | ------------- | ---------------------------- | ------------------------------------- |
-| POST   | /client       | Criação de usuário           | Qualquer usuário, não necessita token |
-| GET    | /client       | Lista todos os usuários      | Usuários autenticados                 |
-| PATCH  | /client       | Atualiza o usuário           | Apenas Dono da conta                  |
-| DELETE | /client       | Deleta o usuário             | Apenas Dono da conta                  |
-| POST   | /login        | Gera o token de autenticação | Qualquer usuário, não necessita token |
-| POST   | /contacts     | Criação de contatos          | Apenas Dono da conta                  |
-| GET    | /contacts     | Lista todos os contacts      | Apenas Dono da conta                  |
-| PATCH  | /contacts/:id | Atualiza um contato          | Apenas Dono da conta                  |
-| DELETE | /contacts/:id | Deleta um contato            | Apenas Dono da conta                  |
+| Método | Endpoint     | Responsabilidade             | Autenticação                          |
+| ------ | ------------ | ---------------------------- | ------------------------------------- |
+| POST   | /client      | Criação de usuário           | Qualquer usuário, não necessita token |
+| GET    | /client      | Lista todos os usuários      | Usuários autenticados                 |
+| PATCH  | /client      | Atualiza o usuário           | Apenas Dono da conta                  |
+| DELETE | /client      | Deleta o usuário             | Apenas Dono da conta                  |
+| POST   | /login       | Gera o token de autenticação | Qualquer usuário, não necessita token |
+| POST   | /contact     | Criação de contatos          | Apenas Dono da conta                  |
+| GET    | /contacts    | Lista todos os contacts      | Apenas Dono da conta                  |
+| PATCH  | /contact/:id | Atualiza um contato          | Apenas Dono da conta                  |
+| DELETE | /contact/:id | Deleta um contato            | Apenas Dono da conta                  |
 
 ## Requisitos do Serviço
 
@@ -79,17 +79,17 @@ Está é uma aplicação básica que visa um CRUD completo de um client, este po
 - A rota de criação deve retornar todos os dados.
 - Não podem ser cadastrados dois usuários com o mesmo **e-mail**, **second_email**, **telephone** e/ou **second_telephone**;
 
-### GET - /contacts
+### GET - /contact
 
 - Rota deve listar todos os contacts.
 - A rota precisa de autenticação para ser acessada
 
-### PATCH - /contacts/:id
+### PATCH - /contact/:id
 
 - Rota deve atualizar os dados do contato do usuário logado
 - Não deve ser possível atualizar os campos **id**;
 - Apenas podem atualizar seu próprio contato.
 
-### DELETE - /contacts/:id
+### DELETE - /contact/:id
 
 - Rota deve deletar o contato do usuário logado

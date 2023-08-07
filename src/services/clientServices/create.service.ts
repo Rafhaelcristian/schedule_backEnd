@@ -3,7 +3,6 @@ import { hash } from "bcryptjs";
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Client } from "../../entities";
-import { AppError } from "../../error";
 import {
   TClientRequest,
   TClientResponse,

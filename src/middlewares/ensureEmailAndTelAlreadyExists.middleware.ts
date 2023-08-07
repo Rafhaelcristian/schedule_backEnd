@@ -29,9 +29,13 @@ const ensureEmailAndTelAlreadyExistsMiddleware = async (
     })
     .getOne();
 
-  console.log(contactAlreadyExists);
+  const contactAlreadyExistsTwo = await contactRepo
+    .createQueryBuilder("c")
+    .where("c.email = :email", { email: email })
+    .orWhere("c.telephone = :telephone", { telephone: telephone })
+    .getOne();
 
-  if (contactAlreadyExists)
+  if (contactAlreadyExists || contactAlreadyExistsTwo)
     throw new AppError("Email or telphone already exists", 409);
 
   return next();

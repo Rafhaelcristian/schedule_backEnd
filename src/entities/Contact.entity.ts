@@ -30,6 +30,6 @@ export class Contact {
   @CreateDateColumn({ type: "date" })
   createdAt: string;
 
-  @ManyToOne(() => Client, (client) => client.contact)
+  @ManyToOne(() => Client, (client) => client.contact, { cascade: true })
   client: Client;
 }

@@ -4,11 +4,8 @@ import {
   Column,
   CreateDateColumn,
   OneToMany,
-  BeforeInsert,
-  BeforeUpdate,
 } from "typeorm";
 import { Contact } from "./Contact.entity";
-import { getRounds, hashSync } from "bcryptjs";
 
 @Entity("clients")
 export class Client {
@@ -30,6 +27,8 @@ export class Client {
   @CreateDateColumn({ type: "date" })
   createdAt: string;
 
-  @OneToMany(() => Contact, (contact) => contact.client)
+  @OneToMany(() => Contact, (contact) => contact.client, {
+    onDelete: "CASCADE",
+  })
   contact: Contact[];
 }
